@@ -1,0 +1,15 @@
+!*.*
+*.out
+*.o
+*.cc~
+*.h~
+*.sh~
+*.conf~
+daemon
+judged
+sim
+insta.sh
+make.sh
+judge.conf
+
+
