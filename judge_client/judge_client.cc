@@ -356,7 +356,6 @@ void find_next_nonspace(int & c1, int & c2, FILE *& f1, FILE *& f2, int & ret) {
  int p=system(diff);
  if (p) return OJ_PE;
  else return OJ_AC;
-
  }
  */
 
@@ -1524,7 +1523,7 @@ int get_page_fault_mem(struct rusage & ruse, pid_t & pidApp) {
 	return m_minflt;
 }
 void print_runtimeerror(char * err) {
-	FILE *ferr = fopen("re_error.out", "a+");
+	FILE *ferr = fopen("error.out", "a+");
 	fprintf(ferr, "Runtime Error:%s\n", err);
 	fclose(ferr);
 }
@@ -1574,7 +1573,7 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 
 		if (WIFEXITED(status))
 			break;
-		if ((lang < 4 || lang == 9) && get_file_size("re_error.out") && !oi_mode) {
+		if ((lang < 4 || lang == 9) && get_file_size("error.out") && !oi_mode) {
 			ACflg = OJ_RE;
 			//addreinfo(solution_id);
 			ptrace(PTRACE_KILL, pidApp, NULL, NULL);
@@ -1659,7 +1658,6 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 			 break;
 			}
 		/*     comment from http://www.felix021.com/blog/read.php?1662
-
 		 WIFSTOPPED: return true if the process is paused or stopped while ptrace is watching on it
 		 WSTOPSIG: get the signal if it was stopped by signal
 		 */
